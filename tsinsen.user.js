@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         清澄统计
+// @name         清澄作业统计
 // @namespace    tsinsen
-// @version      0.1
-// @description  统计题目完成情况
+// @version      0.3
+// @description  统计作业完成情况
 // @author       lvkai
 // @match        http://sy.hhwdd.com/new/user/myassignments.page
 // @icon         https://www.google.com/s2/favicons?domain=hhwdd.com
@@ -53,7 +53,13 @@ setTimeout(function(){
     $.unique(good.sort());
     var e = good.length;
 
-    //更新页面
-    document.getElementById("assignmenttitle").innerHTML="我的作业（共" + ($(".prlist-container.well").length - $("span:contains('自由练习')").length) + "次课，" + $( "span:contains('自由练习')" ).length + "次练习，已完成" + $("span:contains('已完成')").length + "课。共" + a + "题，未做" + b + "题，低分" + c + "题，高分" + d + "题，满分" + e + "题。）";
+    //更新页面;
+    var abc1 = $('<div id="abc1" style="color:black;font-size:14px;font-weight:normal"></div>');
+    var abc2 = $('<div id="abc2" style="color:black;font-size:14px;font-weight:normal"></div>');
+    $("#assignmenttitle").after(abc2);
+    $("#assignmenttitle").after(abc1);
+
+    document.getElementById("abc1").innerHTML="&nbsp;&nbsp;共" + ($(".prlist-container.well").length - $("span:contains('自由练习')").length) + "次课，" + $( "span:contains('自由练习')" ).length + "次练习，已完成" + $("span:contains('已完成')").length + "课。";
+    document.getElementById("abc2").innerHTML="&nbsp;&nbsp;共" + a + "题，未做" + b + "题，低分" + c + "题，高分" + d + "题，满分" + e + "题。";
 }, 800)
 })();
