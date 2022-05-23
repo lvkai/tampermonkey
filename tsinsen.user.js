@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         清澄作业统计
 // @namespace    tsinsen
-// @version      0.5
+// @version      0.6
 // @description  统计作业完成情况
 // @author       lvkai
-// @match        http://sy.hhwdd.com/new/user/myassignments.page
+// @match        https://sy.hhwdd.com/new/user/myassignments.page
 // @icon         https://www.google.com/s2/favicons?domain=hhwdd.com
 // @grant        none
 // ==/UserScript==
@@ -65,6 +65,6 @@ setTimeout(function(){
     $("#assignmenttitle").after(abc1);
 
     document.getElementById("abc1").innerHTML="&nbsp;&nbsp;共" + ($(".prlist-container.well").length - $("span:contains('自由练习')").length) + "次课，" + $( "span:contains('自由练习')" ).length + "次练习，已完成" + $("span:contains('已完成')").length + "课。";
-    document.getElementById("abc2").innerHTML="&nbsp;&nbsp;共" + all.size + "题，未做" + undo.size + "题，低分" + low.size + "题，高分" + high.size + "题，满分" + good.size + "题。总分" + p.toLocaleString() + "分。";
+    document.getElementById("abc2").innerHTML="&nbsp;&nbsp;共" + all.size + "题，未做" + undo.size + "题，已做" + (all.size - undo.size) + "题（低分" + low.size + "题，高分" + high.size + "题，满分" + good.size + "题）。总分" + p.toLocaleString() + "分。";
 }, 800)
 })();
