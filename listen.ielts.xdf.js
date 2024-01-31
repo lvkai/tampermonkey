@@ -14,19 +14,25 @@
     'use strict';
 
     setTimeout(function(){
-        let abc1 = $('<div>&nbsp;</div><div><textarea id= "tb" style="resize:height;float:center;width:95%;font-size:20px;" rows="12"></textarea></div>');
+        let abc1 = $('<div>&nbsp;</div><div><textarea id="tb" style="resize:height;float:center;width:95%;font-size:20px;" rows="12"></textarea></div>');
         $(".boxParent").after(abc1);
-        console.log(localStorage.getItem('tb'));
+        $(".ShortcutKey").children().first().text('快捷键：“Esc” 播放/暂停');
         $("#tb").val(localStorage.getItem('tb'));
 
         $("#tb").keydown(function(event){
             if(event.keyCode == 32){
                 event.stopPropagation();
+            }else if(event.keyCode == 27){
+                $("#cenPlay").click();
             }
         });
         $("#tb").keyup(function(event){
             localStorage.setItem('tb', $("#tb").val());
         });
-}, 50)
+        $("#tb").blur(function(){
+            $("#tb").focus();
+        });
+
+    }, 300);
 
 })();
