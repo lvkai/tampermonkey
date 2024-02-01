@@ -14,8 +14,9 @@
     'use strict';
 
     setTimeout(function(){
-        let abc1 = $('<div style="float:left;font-size:18px;"><br/>听写:</div><div></div>&nbsp;<div><textarea id="tb" style="resize:height;float:center;width:95%;font-size:20px;" rows="12"></textarea></div>');
+        let abc1 = $('<div style="float:left;font-size:18px;"><br/>听写:</div><div></div>&nbsp;<div><textarea id="tb" style="padding-left:5px;padding-top:5px;padding-bottom:5px;padding-right:5px;resize:height;float:center;width:98%;font-size:20px;" rows="12"></textarea></div>');
         $(".boxParent").after(abc1);
+        $(".boxParent").css('height','220px');
         $(".ShortcutKey").children().first().text('快捷键：“Ctrl” 播放/暂停');
         $(".ShortcutKey").children().last().text('');
         $("#tb").val(localStorage.getItem('tb'));
