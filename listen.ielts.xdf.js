@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         新东方雅思精听
 // @namespace    http://tampermonkey.net/
-// @version      2024-02-03
+// @version      2024-02-04
 // @description  try to take over the world!
 // @author       You
 // @match        https://ieltscat.xdf.cn/intensive/intensive/*
@@ -25,7 +25,7 @@
         $("#tb").val(localStorage.getItem(storekey));
 
         $("#tb").keydown(function(event){
-            if(event.keyCode == 32 || event.shiftKey){
+            if(event.keyCode == 32 || event.keyCode == 37 || event.keyCode == 39 || event.shiftKey){
                 event.stopPropagation();
             }
             return true;
@@ -33,6 +33,10 @@
         $(document).keydown(function(event){
             if(event.keyCode == 17){
                 $("#cenPlay").click();
+            }else if(event.keyCode == 33){
+                $("#left").click();
+            }else if(event.keyCode == 34){
+                $("#right").click();
             }
             return true;
         });
