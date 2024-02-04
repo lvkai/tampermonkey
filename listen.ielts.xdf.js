@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      2024-02-04
 // @description  try to take over the world!
-// @author       You
+// @author       lvkai
 // @match        https://ieltscat.xdf.cn/intensive/intensive/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=xdf.cn
 // @grant        none
@@ -23,22 +23,34 @@
         $(".ShortcutKey").children().first().text('快捷键：“Ctrl” 播放/暂停');
         $(".ShortcutKey").children().eq(1).text('PgUp上一句');
         $(".ShortcutKey").children().eq(2).text('PgDn下一句');
+        $(".ShortcutKey").children().eq(3).text('Home显示/隐藏原文');
+        $(".ShortcutKey").children().eq(4).text('End显示/隐藏译文');
         $(".ShortcutKey").children().last().text('');
         $("#tb").val(localStorage.getItem(storekey));
 
         $("#tb").keydown(function(event){
-            if(event.keyCode == 32 || event.keyCode == 37 || event.keyCode == 39 || event.shiftKey){
+            if(event.shiftKey){ //Shift
                 event.stopPropagation();
+            }else if(event.keyCode == 32){ //Blank
+                event.stopPropagation();
+            }else if(event.keyCode >= 37 && event.keyCode <= 40){ //Arrows
+                event.stopPropagation();
+            }else if(event.keyCode >= 33 && event.keyCode <= 36){ //PgUp, PgDn, Home, End
+                event.preventDefault();
             }
             return true;
         });
         $(document).keydown(function(event){
             if(event.keyCode == 17){
                 $("#cenPlay").click();
-            }else if(event.keyCode == 33){
+            }else if(event.keyCode == 33){ //Left Arrow
                 $("#left").click();
-            }else if(event.keyCode == 34){
+            }else if(event.keyCode == 34){ //Right Arrow
                 $("#right").click();
+            }else if(event.keyCode == 36){ //Home
+                $("#showOriginal").click();
+            }else if(event.keyCode == 35){ //End
+               $("#showChinese").click();
             }
             return true;
         });
