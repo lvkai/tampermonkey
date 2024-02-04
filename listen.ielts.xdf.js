@@ -21,6 +21,8 @@
         $(".boxParent").after(abc1);
         $(".boxParent").css('height','220px');
         $(".ShortcutKey").children().first().text('快捷键：“Ctrl” 播放/暂停');
+        $(".ShortcutKey").children().eq(1).text('PgUp上一句');
+        $(".ShortcutKey").children().eq(2).text('PgDn下一句');
         $(".ShortcutKey").children().last().text('');
         $("#tb").val(localStorage.getItem(storekey));
 
